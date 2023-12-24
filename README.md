@@ -1,4 +1,4 @@
-# NASA GIBS Earth Imagery Project
+# NASA GIBS Earth Imagery
 
 ## Overview
 This project utilizes the NASA Global Imagery Browse Services (GIBS) API to fetch satellite imagery of the Earth, with a specific focus on global imagery and detailed imagery of the central United States. The Python code in this repository facilitates the retrieval and processing of these images for various applications such as environmental monitoring, weather tracking, and educational purposes.
