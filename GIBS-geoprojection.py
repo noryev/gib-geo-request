@@ -12,10 +12,15 @@ ssl._create_default_https_context = ssl._create_unverified_context
 # Get yesterday's date in the format YYYY-MM-DD
 yesterday = (datetime.date.today() - datetime.timedelta(days=1)).strftime("%Y-%m-%d")
 
-proj4326 = 'https://gibs.earthdata.nasa.gov/wms/epsg4326/best/wms.cgi?\
-version=1.3.0&service=WMS&\
-request=GetMap&format=image/png&STYLE=default&bbox=-125,24,-66,50&CRS=EPSG:4326&\
-HEIGHT=600&WIDTH=600&TIME=2000-12-01&layers=Landsat_WELD_CorrectedReflectance_Bands157_Global_Annual'
+# Append the time '12:00' to yesterday's date
+yesterday_noon = f'{yesterday}T12:00'
+
+# Construct the URL with the updated TIME parameter
+proj4326 = f'https://gibs.earthdata.nasa.gov/wms/epsg4326/best/wms.cgi?' \
+           f'version=1.3.0&service=WMS&' \
+           f'request=GetMap&format=image/png&STYLE=default&bbox=-125,24,-66,50&' \
+           f'CRS=EPSG:4326&HEIGHT=600&WIDTH=600&TIME={yesterday_noon}&' \
+           f'layers=Landsat_WELD_CorrectedReflectance_Bands157_Global_Annual'
 
 # Request image.
 img = io.imread(proj4326)
